@@ -495,7 +495,9 @@ class _CustomAnimatedToggleSwitchState<T>
 
   void _loading(bool b) {
     if (b == _animationInfo.loading) return;
-    _cancelDrag();
+    // do not cancel the animation, as this leads to jerky animation
+    // steps to reproduce: tap any item, then tap the previously selected item in the middle of the switching animation
+    //_cancelDrag();
     _setAnimationInfo(_animationInfo.setLoading(b), setState: true);
   }
 
